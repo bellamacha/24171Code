@@ -105,6 +105,21 @@ public class Mecanum2 extends LinearOpMode {
                 wrist.setPower(0);     // Stop wrist
             }
 
+             double spin = Math.abs(gamepad1.left_trigger-0.5);
+
+            if (gamepad1.left_trigger > 0){
+                intake.setPower(spin);
+                Thread.sleep(200);
+            }
+            else if (gamepad1.right_trigger > 0){
+                intake.setPower(-spin);
+                Thread.sleep(200);
+            }
+            else if ((gamepad1.right_trigger == 0) && (gamepad1.left_trigger==0)){
+                intake.setPower(0.0);
+            }
+
+
         }
     }
 }
